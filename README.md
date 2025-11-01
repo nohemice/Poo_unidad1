@@ -1,57 +1,59 @@
 # 🎥 Proyecto POO en Java: Sistema de Contenido Audiovisual
 
-## 🎯 Objetivos y Propósito del Proyecto
+## 📝 Descripción del Proyecto
 
-El objetivo principal de este proyecto es aplicar los fundamentos de la **Programación Orientada a Objetos (POO)** en Java para crear un sistema modular y extensible, capaz de clasificar y gestionar varios tipos de contenido multimedia.
+Este proyecto implementa los principios fundamentales de la **Programación Orientada a Objetos (POO)** en Java para crear un sistema modular capaz de clasificar, gestionar y mostrar detalles de diferentes tipos de contenido multimedia.
 
 **Propósito:**
-* **Demostrar la Herencia y el Polimorfismo** utilizando una clase abstracta (\`ContenidoAudiovisual\`) y múltiples subclases.
-* **Implementar Relaciones** clave (Agregación y Composición) para modelar dependencias realistas entre entidades (\`Pelicula\` \-\> \`Actor\`).
-* **Crear un sistema funcional** y bien documentado que pueda ser fácilmente extendido con nuevos tipos de contenido.
+* **Demostrar la Herencia y Abstracción:** Utilizando una clase abstracta base (\`ContenidoAudiovisual\`).
+* **Implementar Polimorfismo:** A través del método \`mostrarDetalles()\` que se comporta de manera única en cada subclase.
+* **Modelar Relaciones:** Aplicando **Agregación** (\`Pelicula\` \-\> \`Actor\`) y **Composición** (\`Documental\` \-\> \`Investigador\`).
 
 ***
 
 ## 📂 Estructura de Carpetas en GitHub
 
-El proyecto sigue la estructura estándar para proyectos Java, facilitando la localización y compilación del código fuente.
+La estructura de tu proyecto utiliza dos paquetes (`poo` y `uni1a`) dentro de la carpeta fuente (`src`), siendo \`uni1a\` el contenedor de **toda la lógica del sistema**.
 
-\`\`\`
 Poo_unidad1/
-├── src/
-│   └── uni1a/
-│       ├── Actor.java
-│       ├── ContenidoAudiovisual.java
-│       ├── Documental.java
-│       ├── Pelicula.java
-│       ├── PruebaAudioVisual.java
-│       ├── ... (todas las clases)
 ├── .gitignore
-└── README.md
-\`\`\`
+├── README.md
+└── src/
+    ├── poo/
+    │   └── PruebaAudioVisual.java (Clase principal de ejecución)
+    └── uni1a/
+        ├── Actor.java
+        ├── ContenidoAudiovisual.java
+        ├── Cortometraje.java
+        ├── Documental.java
+        ├── Investigador.java
+        ├── Pelicula.java
+        ├── SerieDeTV.java
+        ├── Temporada.java
+        └── VideoYoutube.java
 
-* **\`src/\`**: Carpeta que contiene el código fuente de la aplicación.
-* **\`src/uni1a/\`**: Contiene todos los archivos \`.java\` (el código principal del proyecto).
+
+* **\`src/poo/\`**: Contiene la clase de ejecución que prueba el sistema.
+* **\`src/uni1a/\`**: Contiene el 100% de las entidades, subclases, la clase abstracta, y las clases asociadas del sistema.
 
 ***
 
-## ✨ Clases y Funcionalidades Nuevas Añadidas
+## ✨ Características y Funcionalidades Implementadas
 
-Este proyecto implementa múltiples clases y relaciones complejas:
+### 1. Clases de Contenido y Entidades Asociadas
 
-### 1. Clases y Conceptos Clave
-
-| Clase | Concepto POO | Relación Implementada |
+| Clase | Concepto POO | Función Principal |
 | :--- | :--- | :--- |
-| **\`ContenidoAudiovisual\`** | Clase **Abstracta** | Base para toda la herencia. |
-| **\`Pelicula\`** | Agregación | Relación débil con \`Actor\` ($1 \rightarrow 1..*$). |
-| **\`Documental\`** | **Composición** | Relación fuerte con \`Investigador\` ($1 \rightarrow 1$). |
-| **\`SerieDeTV\`** | Agregación | Relación débil con \`Temporada\` ($1 \rightarrow 1..*$). |
-| **\`Cortometraje\`** / **\`VideoYoutube\`** | Herencia | Nuevas subclases para extender el catálogo. |
+| **\`ContenidoAudiovisual\`** | **Clase Abstracta** | Define la estructura básica (\`titulo\`, \`genero\`, \`id\`). |
+| **\`Pelicula\`** | Herencia + Agregación | Contiene \`Actor\`es en su \`reparto\`. |
+| **\`Documental\`** | Herencia + **Composición** | Depende directamente de un \`Investigador\`. |
+| **\`SerieDeTV\`** | Herencia + Agregación | Se compone de múltiples objetos \`Temporada\`. |
+| **\`Actor\`**, **\`Temporada\`**, **\`Investigador\`** | Entidades Asociadas | Proporcionan detalles específicos a las clases de contenido. |
 
-### 2. Mejoras Adicionales
+### 2. Implementación de POO
 
-* **Encapsulamiento:** Todos los atributos son \`private\` y se gestionan mediante métodos \`public\` **Getter y Setter**.
-* **Polimorfismo:** La clase \`PruebaAudioVisual.java\` utiliza el Polimorfismo al iterar sobre el array base (\`ContenidoAudiovisual\`) y llamar a la implementación específica del método \`mostrarDetalles()\` de cada subclase.
+* **Encapsulamiento:** Todos los atributos son \`private\` y su acceso es gestionado mediante métodos **Getter y Setter**.
+* **Polimorfismo:** El método \`main\` de \`PruebaAudioVisual.java\` itera sobre el array de tipo \`ContenidoAudiovisual\`, y el JVM ejecuta la versión correcta del método \`mostrarDetalles()\` para cada subclase.
 
 ***
 
@@ -66,11 +68,10 @@ git clone https://github.com/nohemice/Poo_unidad1.git
 cd Poo_unidad1
 \`\`\`
 
-### 2. Abrir y Ejecutar en Eclipse
+### 2. Ejecutar la Aplicación Localmente
 
-1.  Abre **Eclipse IDE**.
-2.  Ve a \`File\` \> \`Import...\`.
-3.  Selecciona \`General\` \> \`Existing Projects into Workspace\` y haz clic en **Next**.
-4.  Haz clic en \`Browse...\` y selecciona la carpeta raíz del proyecto que acabas de clonar.
-5.  Asegúrate de que el proyecto \`Poo\_unidad1\` esté seleccionado.
-6.  Para ejecutar la aplicación, abre la clase **\`PruebaAudioVisual.java\`** (dentro del paquete \`uni1a\` en la carpeta \`src\`) y haz clic en el botón de **Run** (Ejecutar) para ver la salida en la consola.
+1.  Abre tu IDE (Eclipse, NetBeans, IntelliJ) e importa el proyecto \`Poo\_unidad1\` como un proyecto Java existente.
+2.  Abre la clase principal: **\`PruebaAudioVisual.java\`** (ubicada en \`src/poo/\`).
+3.  Ejecuta la clase \`PruebaAudioVisual.java\` haciendo clic en el botón de **Run** (Ejecutar).
+
+La aplicación demostrará la interacción entre los paquetes y la funcionalidad completa del sistema.
