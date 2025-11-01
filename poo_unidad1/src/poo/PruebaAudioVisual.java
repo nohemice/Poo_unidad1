@@ -21,9 +21,9 @@ public class PruebaAudioVisual {
         // ... (Actores, Temporadas, Investigador permanecen igual) ...
         Actor actor1 = new Actor("Leonardo DiCaprio", 50);
         Actor actor2 = new Actor("Kate Winslet", 49);
-        List<Actor> repartoTitanic = new ArrayList<>();
-        repartoTitanic.add(actor1);
-        repartoTitanic.add(actor2);
+        List<Actor> repartoAvatar = new ArrayList<>();
+        repartoAvatar.add(actor1);
+        repartoAvatar.add(actor2);
 
         Temporada temp1 = new Temporada(1, 10);
         Temporada temp2 = new Temporada(2, 8);
@@ -37,7 +37,7 @@ public class PruebaAudioVisual {
         ContenidoAudiovisual[] contenidos = new ContenidoAudiovisual[5];
         
         // Pelicula con Agregación de Actor
-        contenidos[0] = new Pelicula("Titanic", 195, "Drama", "Paramount", repartoTitanic);
+        contenidos[0] = new Pelicula("Avatar", 125, "Accion", "20th Century Studiost", repartoAvatar);
         
         // SerieDeTV con Agregación de Temporada
         contenidos[1] = new SerieDeTV("Game of Thrones", 60, "Fantasy", temporadasGoT);
